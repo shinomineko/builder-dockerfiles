@@ -30,7 +30,7 @@ jobs:
 
       - uses: docker/build-push-action@v2.7.0
         with:
-          file: ./dotnet/sdk/Dockerfile
+          file: ./dotnet-sdk/Dockerfile
           push: true
           tags: |
             shinomineko/builder:dotnet-sdk-5.0-alpine-${{ steps.date.outputs.date }}
