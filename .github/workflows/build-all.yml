@@ -33,5 +33,5 @@ jobs:
           file: ./dotnet/sdk/Dockerfile
           push: true
           tags: |
-            shinomineko/builder:dotnet-sdk-3.1-${{ steps.date.outputs.date }}
-            shinomineko/builder:dotnet-sdk-3.1-latest
+            shinomineko/builder:dotnet-sdk-5.0-alpine-${{ steps.date.outputs.date }}
+            shinomineko/builder:dotnet-sdk-5.0-alpine-latest
