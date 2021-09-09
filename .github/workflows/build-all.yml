@@ -47,5 +47,5 @@ jobs:
           file: ./node/Dockerfile
           push: true
           tags: |
-            shinomineko/builder:node12-bullseye-${{ steps.date.outputs.date }}
-            shinomineko/builder:node12-bullseye-latest
+            shinomineko/builder:node14-bullseye-${{ steps.date.outputs.date }}
+            shinomineko/builder:node14-bullseye-latest
