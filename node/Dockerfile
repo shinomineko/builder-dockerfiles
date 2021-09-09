@@ -1,4 +1,4 @@
-FROM node:12-bullseye-slim
+FROM node:14-bullseye-slim
 
 RUN apt-get update \
 	&& apt-get upgrade -y \
