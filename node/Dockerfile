@@ -1,5 +1,6 @@
 FROM node:14-bullseye-slim
 
+ARG SONAR_SCANNER_VERSION=4.6.2.2472
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y \
@@ -14,4 +15,11 @@ RUN apt-get update \
 	&& apt-get install -y google-chrome-stable --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
+WORKDIR /sonar
+RUN curl -sLO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
+	&& unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
+	&& rm -f *.zip \
+	&& ln -sfn /sonar/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin/sonar-scanner /usr/local/bin/sonar-scanner
+
+WORKDIR /
 ENV CHROME_BIN=/usr/bin/google-chrome
