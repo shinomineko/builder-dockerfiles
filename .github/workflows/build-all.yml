@@ -45,6 +45,7 @@ jobs:
       - uses: docker/build-push-action@v2.7.0
         with:
           file: ./node/Dockerfile
+          context: ./node
           push: true
           tags: |
             shinomineko/builder:node14-bullseye-${{ steps.date.outputs.date }}
