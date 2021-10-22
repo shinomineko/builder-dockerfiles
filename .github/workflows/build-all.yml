@@ -1,17 +1,21 @@
 ---
 name: build all
-
 on:
   schedule:
     - cron: "0 0 * * 0"
-
   push:
     branches:
       - main
-
 jobs:
-  dotnet-sdk:
+  docker:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        images:
+          [
+            dotnetsdk5.0-alpine,
+            node14-bullseye
+          ]
     steps:
       - uses: actions/checkout@v2.3.5
       - uses: docker/setup-qemu-action@v1
@@ -20,33 +24,9 @@ jobs:
         with:
           username: shinomineko
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: echo "::set-output name=date::$(date +'%Y%m%d')"
-        id: date
       - uses: docker/build-push-action@v2.7.0
         with:
-          file: ./dotnet-sdk/Dockerfile
+          context: ./builder/${{ matrix.images }}
           push: true
           tags: |
-            shinomineko/builder:dotnet-sdk-5.0-alpine-${{ steps.date.outputs.date }}
-            shinomineko/builder:dotnet-sdk-5.0-alpine-latest
-
-  node:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.5
-      - uses: docker/setup-qemu-action@v1
-      - uses: docker/setup-buildx-action@v1
-      - uses: docker/login-action@v1
-        with:
-          username: shinomineko
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: echo "::set-output name=date::$(date +'%Y%m%d')"
-        id: date
-      - uses: docker/build-push-action@v2.7.0
-        with:
-          file: ./node/Dockerfile
-          context: ./node
-          push: true
-          tags: |
-            shinomineko/builder:node14-bullseye-${{ steps.date.outputs.date }}
-            shinomineko/builder:node14-bullseye-latest
+            shinomineko/builder:${{ matrix.images }}
