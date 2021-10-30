@@ -9,8 +9,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    env:
-      PUSH: 'true'
     steps:
       - uses: actions/checkout@v2.3.5
       - uses: docker/setup-qemu-action@v1
@@ -21,3 +19,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - run: make build
         shell: bash
+        env:
+          PUSH: 'true'
