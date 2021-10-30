@@ -9,13 +9,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        images:
-          [
-            dotnetsdk5.0-alpine,
-            node14-bullseye
-          ]
+    env:
+      PUSH: 'true'
     steps:
       - uses: actions/checkout@v2.3.5
       - uses: docker/setup-qemu-action@v1
@@ -24,9 +19,5 @@ jobs:
         with:
           username: shinomineko
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - uses: docker/build-push-action@v2.7.0
-        with:
-          context: ./builder/${{ matrix.images }}
-          push: true
-          tags: |
-            shinomineko/builder:${{ matrix.images }}
+      - run: make build
+        shell: bash
