@@ -36,7 +36,7 @@ do_file() {
 	{
 		build_and_push "${base}" "${suite}" "${build_dir}"
 	} || {
-		ERRORS+=("$base")
+		ERRORS+=("${base}:${suite}")
 	}
 }
 
