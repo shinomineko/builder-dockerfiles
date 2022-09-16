@@ -7,6 +7,7 @@ RUN apk update \
 	ca-certificates \
 	curl \
 	nodejs=16.16.0-r0 \
+	npm=8.10.0-r0 \
 	openjdk11-jdk \
 	unzip \
 	&& rm -rf /var/lib/apt/lists/*
