@@ -8,6 +8,7 @@ RUN apk update \
 	curl \
 	nodejs \
 	openjdk11-jdk \
+	unzip \
 	&& rm -rf /var/lib/apt/lists/*
 
 ARG SONAR_SCANNER_VERSION=4.7.0.2747
