@@ -6,7 +6,7 @@ RUN apk update \
 	&& apk add --no-cache \
 	ca-certificates \
 	curl \
-	nodejs \
+	nodejs=16.16.0-r0 \
 	openjdk11-jdk \
 	unzip \
 	&& rm -rf /var/lib/apt/lists/*
