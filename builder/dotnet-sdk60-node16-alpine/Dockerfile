@@ -6,7 +6,7 @@ RUN apk update \
 	&& apk add --no-cache \
 	ca-certificates \
 	curl \
-	nodejs=16.16.0-r0 \
+	nodejs=16.17.1-r0 \
 	npm=8.10.0-r0 \
 	openjdk11-jdk \
 	unzip \
