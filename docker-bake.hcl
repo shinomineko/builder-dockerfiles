@@ -30,59 +30,56 @@ variable "REPO_BUILDER" {
   default = "shinomineko/builder"
 }
 
-target "builder_dotnet50" {
-  context = "builder/dotnet-sdk5.0-alpine"
+target "builder" {
   labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
   platforms = ["linux/amd64"]
+}
+
+target "builder_dotnet50" {
+  inherits = ["builder"]
+  context = "builder/dotnet-sdk5.0-alpine"
   tags = ["${REGISTRY}/${REPO_BUILDER}:dotnet-sdk5.0-alpine"]
 }
 
 target "builder_dotnet60" {
+  inherits = ["builder"]
   context = "builder/dotnet-sdk6.0-alpine"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:dotnet-sdk6.0-alpine"]
 }
 
 target "builder_dotnet60node14" {
+  inherits = ["builder"]
   context = "builder/dotnet-sdk60-node14-alpine"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:dotnet-sdk60-node14-alpine"]
 }
 
 target "builder_dotnet60node16" {
+  inherits = ["builder"]
   context = "builder/dotnet-sdk60-node16-alpine"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:dotnet-sdk60-node16-alpine"]
 }
 
 target "builder_dotnet70" {
+  inherits = ["builder"]
   context = "builder/dotnet-sdk70-alpine"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:dotnet-sdk70-alpine"]
 }
 
 target "builder_node14" {
+  inherits = ["builder"]
   context = "builder/node14-bullseye"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:node14-bullseye"]
 }
 
 target "builder_node16" {
+  inherits = ["builder"]
   context = "builder/node16-bullseye"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:node16-bullseye"]
 }
 
 target "builder_node18" {
+  inherits = ["builder"]
   context = "builder/node18-bullseye"
-  labels = merge("${LABELS}", {"org.opencontainers.image.title" = "builder"})
-  platforms = ["linux/amd64"]
   tags = ["${REGISTRY}/${REPO_BUILDER}:node18-bullseye"]
 }
 
