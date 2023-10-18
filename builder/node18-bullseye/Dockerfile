@@ -1,6 +1,6 @@
 FROM node:18-bullseye-slim
 
-ARG SONAR_SCANNER_VERSION=4.6.2.2472
+ARG SONAR_SCANNER_VERSION=5.0.1.3006
 RUN apt-get update \
 	&& apt-get upgrade -y \
 	&& apt-get install -y \

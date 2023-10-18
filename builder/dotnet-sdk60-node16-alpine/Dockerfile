@@ -18,7 +18,7 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-ARG SONAR_SCANNER_VERSION=4.7.0.2747
+ARG SONAR_SCANNER_VERSION=5.0.1.3006
 WORKDIR /sonar
 RUN curl -sLO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
 	&& unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip \
