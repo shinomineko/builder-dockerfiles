@@ -2,13 +2,13 @@ FROM node:14-alpine as node
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine
 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 RUN apk update \
 	&& apk upgrade \
 	&& apk add --no-cache \
 	ca-certificates \
 	curl \
-	openjdk11-jdk \
+	openjdk17-jdk \
 	unzip \
 	&& rm -rf /var/lib/apt/lists/*
 
